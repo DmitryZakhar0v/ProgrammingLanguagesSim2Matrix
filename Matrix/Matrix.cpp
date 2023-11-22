@@ -10,15 +10,14 @@ miit::Matrix::Matrix()
 
 void miit::Matrix::fill_random(size_t user_rows, size_t user_columns)
 {
-	this->columns = user_rows;
-	this->rows = user_columns;
+	
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<> uniformIntDistribution(-50, 50);
-	for (size_t i = 0; i < this->rows; i++) 
+	for (size_t i = 0; i < this->rows_counts(); i++)
 	{
 		std::vector<int> temp {};
-		for (size_t j = 0; j < this->columns; j++)
+		for (size_t j = 0; j < this->columns_counts(); j++)
 		{
 			temp.push_back(uniformIntDistribution(gen));
 		}
@@ -28,8 +27,6 @@ void miit::Matrix::fill_random(size_t user_rows, size_t user_columns)
 
 void miit::Matrix::fill_manual(size_t user_rows, size_t user_columns, std::initializer_list<int> user_data)
 {
-	this->rows = user_rows;
-	this->columns = user_columns;
 	this->data = std::vector <std::vector<int>> { user_rows };
 	size_t i = 0;
 	size_t j = 0;
@@ -37,7 +34,7 @@ void miit::Matrix::fill_manual(size_t user_rows, size_t user_columns, std::initi
 	{
 		this->data[j].push_back(item);
 		i++;
-		if (i % columns == 0)
+		if (i % user_columns == 0)
 		{
 			j++;
 		}
@@ -46,11 +43,16 @@ void miit::Matrix::fill_manual(size_t user_rows, size_t user_columns, std::initi
 
 void miit::Matrix::add_row(std::vector<int> user_data, size_t index)
 {
-	if (index < this->rows && index > this->rows) 
+	if (index < 0 || index > this->rows_counts())
 	{
 		throw std::out_of_range("incorrect index");
 	}
 	this->data.insert(data.begin() + index, user_data);
+}
+
+void miit::Matrix::add_row(std::vector<int> user_data)
+{
+	this->data.push_back(user_data);
 }
 
 void miit::Matrix::add_columns(std::vector<int> user_data, size_t index)
@@ -58,6 +60,27 @@ void miit::Matrix::add_columns(std::vector<int> user_data, size_t index)
 	transpose();
 	this->add_row(user_data, index);
 	transpose();
+}
+
+void miit::Matrix::add_columns(std::vector<int> user_data)
+{
+	transpose();
+	this->add_row(user_data);
+	transpose();
+}
+
+size_t miit::Matrix::rows_counts() const
+{
+	return this->data.size();
+}
+
+size_t miit::Matrix::columns_counts() const
+{
+	if (this->data.size() == 0) 
+	{
+		return 0;
+	}
+	return this->data[0].size();
 }
 
 void miit::Matrix::transpose()
@@ -73,14 +96,20 @@ void miit::Matrix::transpose()
 		temp_data.push_back(temp);
 	}
 	this->data = temp_data;
+	
+}
+
+std::vector<int>& miit::Matrix::operator[](size_t index)
+{
+	return data[index];
 }
 
 std::string miit::Matrix::to_string() const noexcept
 {
 	std::stringstream temp;
-	for (size_t i = 0; i < this->rows; i++)
+	for (size_t i = 0; i < this->rows_counts(); i++)
 	{
-		for (size_t j = 0; j < this->columns; j++)
+		for (size_t j = 0; j < this->columns_counts(); j++)
 		{
 			temp << this->data[i][j] << "\t";
 		}

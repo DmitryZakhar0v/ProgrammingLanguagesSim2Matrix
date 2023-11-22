@@ -1,10 +1,13 @@
 #include <iostream>
-#include "../Matrix/Matrix.h"
+#include "../Tasks/Tasks.h"
+
+
 
 int main() 
 {
-	miit::Matrix a;
-	a.fill_manual(2, 2, { 4,3,2,1 });
-	std::cout << a;
+	miit::Tasks task;
+	task.resolve_task_1();
+	std::cout << "--------------------------"<<std::endl;
+	task.resolve_task_2();
 	return 0;
 }
