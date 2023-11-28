@@ -3,41 +3,17 @@
 #include <sstream>
 
 
-miit::Matrix::Matrix() 
+miit::Matrix::Matrix(size_t user_rows, size_t user_columns, Generator* generator)
 	:data({})
 {
-}
-
-void miit::Matrix::fill_random(size_t user_rows, size_t user_columns)
-{
-	
-	std::random_device rd;
-	std::mt19937 gen(rd());
-	std::uniform_int_distribution<> uniformIntDistribution(-50, 50);
-	for (size_t i = 0; i < this->rows_counts(); i++)
+	for (size_t i = 0; i < user_rows; i++)
 	{
-		std::vector<int> temp {};
-		for (size_t j = 0; j < this->columns_counts(); j++)
+		std::vector<int> temp{};
+		for (size_t j = 0; j < user_columns; j++)
 		{
-			temp.push_back(uniformIntDistribution(gen));
+			temp.push_back(generator->generate());
 		}
 		this->data.push_back(temp);
-	}
-}
-
-void miit::Matrix::fill_manual(size_t user_rows, size_t user_columns, std::initializer_list<int> user_data)
-{
-	this->data = std::vector <std::vector<int>> { user_rows };
-	size_t i = 0;
-	size_t j = 0;
-	for (auto& item : user_data)
-	{
-		this->data[j].push_back(item);
-		i++;
-		if (i % user_columns == 0)
-		{
-			j++;
-		}
 	}
 }
 

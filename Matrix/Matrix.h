@@ -1,4 +1,5 @@
 #pragma once
+#include "../Generator/Generator.h"
 #include <iostream>
 #include <vector>
 
@@ -7,9 +8,7 @@ namespace miit
 	class Matrix
 	{
 	public:
-		Matrix();
-		void fill_random(size_t user_rows, size_t user_columns);
-		void fill_manual(size_t user_rows, size_t user_columns, std::initializer_list<int> user_data);
+		Matrix(size_t user_rows, size_t user_columns, Generator* generator);
 		void add_row(std::vector<int> user_data, size_t index);
 		void add_row(std::vector<int> user_data);
 		void add_columns(std::vector<int> user_data, size_t index);

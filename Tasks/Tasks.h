@@ -8,9 +8,9 @@ namespace miit
 	struct Tasks
 	{
 	public:
-		void resolve_task_1();
+		//void resolve_task_1();
 
-		void resolve_task_2(); 
+		//void resolve_task_2(); 
 	};
 
 }

@@ -1,10 +1,10 @@
 #include "Tasks.h"
-
+/*
 void miit::Tasks::resolve_task_1()
 {
-	miit::Matrix matrix;
-	matrix.fill_manual(4, 4, { 1, 16, 3, 4, 16, 6, 7, 8, -17, 10, 11, 16, 13, 14, 15, 16 });
-	miit::Matrix result = matrix;
+	//miit::Matrix matrix;
+	//matrix.fill_manual(4, 4, { 1, 16, 3, 4, 16, 6, 7, 8, -17, 10, 11, 16, 13, 14, 15, 16 });
+	//miit::Matrix result;
 	int max = miit::get_abs_max_element(matrix);
 	for (size_t i = 0; i < result.rows_counts(); i++)
 	{
@@ -21,9 +21,9 @@ void miit::Tasks::resolve_task_1()
 
 void miit::Tasks::resolve_task_2()
 {
-	miit::Matrix matrix;
-	matrix.fill_manual(4, 4, { 1, 16, 3, 4, 16, 6, 7, 8, -17, 10, 11, 16, 13, 14, 15, 16 });
-	miit::Matrix result;
+	//miit::Matrix matrix;
+	//matrix.fill_manual(4, 4, { 1, 16, 3, 4, 16, 6, 7, 8, -17, 10, 11, 16, 13, 14, 15, 16 });
+	//miit::Matrix result;
 	std::vector<int> zero_row;
 	for (size_t i = 0; i < matrix.rows_counts(); i++)
 	{
@@ -40,7 +40,7 @@ void miit::Tasks::resolve_task_2()
 	}
 	std::cout << result;
 }
-
+*/
 int miit::get_abs_max_element(miit::Matrix matrix)
 {
 	int max = 0;

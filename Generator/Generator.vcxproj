@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{e104a99c-c944-4cb0-abf2-67c96ed844f1}</ProjectGuid>
-    <RootNamespace>Demo</RootNamespace>
+    <ProjectGuid>{94312587-d623-4248-950b-074615c083c9}</ProjectGuid>
+    <RootNamespace>Generator</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -40,7 +40,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -128,15 +128,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClInclude Include="Generator.h" />
+    <ClInclude Include="IStreamGenerator.h" />
+    <ClInclude Include="RandomGenerator.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Generator\Generator.vcxproj">
-      <Project>{94312587-d623-4248-950b-074615c083c9}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Matrix\Matrix.vcxproj">
-      <Project>{89712423-074c-4b06-8db9-283ab9b1d607}</Project>
-    </ProjectReference>
+    <ClCompile Include="IStreamGenerator.cpp" />
+    <ClCompile Include="RandomGenerator.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
