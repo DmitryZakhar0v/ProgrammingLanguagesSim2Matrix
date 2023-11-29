@@ -128,12 +128,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BaseTask.h" />
     <ClInclude Include="Tasks.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Tasks.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Generator\Generator.vcxproj">
+      <Project>{94312587-d623-4248-950b-074615c083c9}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Matrix\Matrix.vcxproj">
       <Project>{89712423-074c-4b06-8db9-283ab9b1d607}</Project>
     </ProjectReference>

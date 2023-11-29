@@ -133,6 +133,11 @@
   <ItemGroup>
     <ClInclude Include="Matrix.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Generator\Generator.vcxproj">
+      <Project>{94312587-d623-4248-950b-074615c083c9}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

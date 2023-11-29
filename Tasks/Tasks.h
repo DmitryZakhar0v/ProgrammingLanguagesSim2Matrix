@@ -1,17 +1,20 @@
 #pragma once
+#include "BaseTask.h"
 #include "../Matrix/Matrix.h"
 
 namespace miit
 {
-	int get_abs_max_element(miit::Matrix matrix);
-	bool is_element_in_row(std::vector<int> row, int item);
-	struct Tasks
+	struct Tasks : public BaseTask
 	{
+	private:
+		Matrix matrix;
+
 	public:
-		//void resolve_task_1();
+		Tasks(Matrix matrix);
 
-		//void resolve_task_2(); 
+		Matrix resolve_task_1() override;
+
+		Matrix resolve_task_2() override; 
 	};
-
 }
 

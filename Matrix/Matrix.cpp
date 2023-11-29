@@ -17,6 +17,11 @@ miit::Matrix::Matrix(size_t user_rows, size_t user_columns, Generator* generator
 	}
 }
 
+miit::Matrix::Matrix()
+	:data(std::vector<std::vector<int>> {})
+{
+}
+
 void miit::Matrix::add_row(std::vector<int> user_data, size_t index)
 {
 	if (index < 0 || index > this->rows_counts())
@@ -43,6 +48,34 @@ void miit::Matrix::add_columns(std::vector<int> user_data)
 	transpose();
 	this->add_row(user_data);
 	transpose();
+}
+
+int miit::Matrix::get_abs_max_element()
+{
+	int max = 0;
+	for (size_t i = 0; i < this->rows_counts(); i++)
+	{
+		for (size_t j = 0; j < this->columns_counts(); j++)
+		{
+			if (std::abs(this->data[i][j]) >= std::abs(max))
+			{
+				max = this->data[i][j];
+			}
+		}
+	}
+	return max;
+}
+
+bool miit::Matrix::is_element_in_row(int value, size_t row_id)
+{
+	for (size_t i = 0; i < this->data[row_id].size(); i++)
+	{
+		if (this->data[row_id][i] == value)
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 size_t miit::Matrix::rows_counts() const

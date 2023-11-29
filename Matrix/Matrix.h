@@ -9,10 +9,13 @@ namespace miit
 	{
 	public:
 		Matrix(size_t user_rows, size_t user_columns, Generator* generator);
+		Matrix();
 		void add_row(std::vector<int> user_data, size_t index);
 		void add_row(std::vector<int> user_data);
 		void add_columns(std::vector<int> user_data, size_t index);
 		void add_columns(std::vector<int> user_data);
+		int get_abs_max_element();
+		bool is_element_in_row(int value, size_t row_id);
 		size_t rows_counts() const;
 		size_t columns_counts() const;
 		void transpose();
