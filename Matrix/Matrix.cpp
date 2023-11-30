@@ -113,6 +113,11 @@ std::vector<int>& miit::Matrix::operator[](size_t index)
 	return data[index];
 }
 
+const std::vector<int>& miit::Matrix::operator[](size_t index) const
+{
+	return data[index];
+}
+
 std::string miit::Matrix::to_string() const noexcept
 {
 	std::stringstream temp;

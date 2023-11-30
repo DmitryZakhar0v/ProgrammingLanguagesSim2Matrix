@@ -8,7 +8,6 @@ int main()
 {
 	Generator* manual = new IStreamGenerator();
 	Generator* random = new RandomGenerator(-25, 25);
-	
 	miit::Matrix matrix_random{ 5,5, random };
 	std::cout << matrix_random;
 	std::cout << " ------------------------" << std::endl;

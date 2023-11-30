@@ -1,7 +1,7 @@
 #include "IStreamGenerator.h"
 
-IStreamGenerator::IStreamGenerator(std::istream& in)
-	:in{ in }
+IStreamGenerator::IStreamGenerator(std::istream& input)
+	:in{ input }
 {
 }
 
