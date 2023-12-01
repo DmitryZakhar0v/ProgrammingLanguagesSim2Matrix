@@ -167,6 +167,17 @@
   <ItemGroup>
     <ClInclude Include="pch.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Generator\Generator.vcxproj">
+      <Project>{94312587-d623-4248-950b-074615c083c9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Matrix\Matrix.vcxproj">
+      <Project>{89712423-074c-4b06-8db9-283ab9b1d607}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Tasks\Tasks.vcxproj">
+      <Project>{9cd3c780-a556-4b14-9d2a-a4a6d794de2a}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -17,6 +17,23 @@ miit::Matrix::Matrix(size_t user_rows, size_t user_columns, Generator* generator
 	}
 }
 
+miit::Matrix::Matrix(size_t user_rows, size_t user_columns, std::initializer_list<int> data)
+	:data(std::vector<std::vector<int>> {user_rows})
+{
+	size_t i = 0;
+	size_t j = 0;
+	for (auto& item : data)
+		{
+		this->data[j].push_back(item);
+		i++;
+		if (i % user_columns == 0)
+		{
+			j++;
+		}
+	}
+	
+}
+
 miit::Matrix::Matrix()
 	:data(std::vector<std::vector<int>> {})
 {
@@ -36,14 +53,14 @@ void miit::Matrix::add_row(std::vector<int> user_data)
 	this->data.push_back(user_data);
 }
 
-void miit::Matrix::add_columns(std::vector<int> user_data, size_t index)
+void miit::Matrix::add_column(std::vector<int> user_data, size_t index)
 {
 	transpose();
 	this->add_row(user_data, index);
 	transpose();
 }
 
-void miit::Matrix::add_columns(std::vector<int> user_data)
+void miit::Matrix::add_column(std::vector<int> user_data)
 {
 	transpose();
 	this->add_row(user_data);
@@ -135,4 +152,9 @@ std::string miit::Matrix::to_string() const noexcept
 std::ostream& miit::operator<<(std::ostream& os, Matrix& matrix) noexcept
 {
 	return os << matrix.to_string();
+}
+
+bool miit::operator==(Matrix& lha, Matrix& rha) noexcept
+{
+	return lha.to_string() == rha.to_string();
 }

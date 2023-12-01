@@ -20,6 +20,15 @@ namespace miit
 		Matrix(size_t user_rows, size_t user_columns, Generator* generator);
 
 		/**
+		* @brief Инициализирует объект тип матрица по параметрам пользователя
+		* @param user_rows Количество строк в матрице
+		* @param user_columns Количество столбцов в матрице
+		* @param data Информация о значениях матрицы
+		*/
+		Matrix(size_t user_rows, size_t user_columns, std::initializer_list<int> data);
+
+
+		/**
 		* @brief Инициализирует пустой объект тип матрица
 		*/
 		Matrix();
@@ -43,14 +52,14 @@ namespace miit
 		* @param user_data Столбец для добавления
 		* @param index Индекс на который столбец будет добавлен
 		*/
-		void add_columns(std::vector<int> user_data, size_t index);
+		void add_column(std::vector<int> user_data, size_t index);
 
 		/**
 		* @brief Добавляет столбец в матрицу по индексу, если индекс не указан, то добавит элемент в конец
 		* @param user_data Столбец для добавления
 		* @param index Индекс на который столбец будет добавлен
 		*/
-		void add_columns(std::vector<int> user_data);
+		void add_column(std::vector<int> user_data);
 
 		/**
 		* @brief Получение максимального по модолю элемента в матрице
@@ -88,6 +97,14 @@ namespace miit
 		* @return Поток вывода с информацией матрицы
 		*/
 		friend std::ostream& operator<<(std::ostream& os, Matrix& matrix) noexcept;
+
+		/**
+		* @brief Перегрузка оператора сравнения
+		* @param lha Первый аргумент для сравнения 
+		* @param rha Второй аргумент для сравнения
+		* @return true - если равны, false - если нет
+		*/
+		friend bool operator==(Matrix& lha, Matrix& rha) noexcept;
 
 		/**
 		* @brief Перегрузка оператора квадратные скобки
